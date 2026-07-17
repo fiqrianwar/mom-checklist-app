@@ -6,4 +6,9 @@ export const icons = {
   leftArrow: require('./icons/arrow-left.png'),
   momOval: require('./icons/mom-oval.png'),
   momBaby: require('./icons/mom-baby.png'),
+  books: require('./icons/books.png'),
+  more: require('./icons/more.png'),
+  deleteTrash: require('./icons/delete-trash.png'),
+  visibility: require('./icons/visibility.png'),
+  edit: require('./icons/edit.png'),
 };
