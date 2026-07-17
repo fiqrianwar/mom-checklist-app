@@ -1,4 +1,4 @@
 export type RootStackParamList = {
-  Home: undefined;
-  MomChecklist: undefined;
+  HomeScreen: undefined;
+  MomChecklistScreen: undefined;
 };

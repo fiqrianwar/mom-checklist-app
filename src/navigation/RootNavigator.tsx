@@ -1,12 +1,11 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 
-import type { RootStackParamList } from './types';
-import { HomeScreen, MomChecklistScreen } from '@/screens';
-import { Image, Pressable, Text, TouchableOpacity, View } from 'react-native';
-import { icons } from '@/assets';
 import { BackButton } from '@/components';
+import { HomeScreen } from '@/screens';
+import TopTabsMomChecklist from './MomChecklistTopTabsNavigator';
+import type { RootStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -18,10 +17,10 @@ export function RootNavigator() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen
-          name="MomChecklist"
-          component={MomChecklistScreen}
+          name="MomChecklistScreen"
+          component={TopTabsMomChecklist}
           options={({ navigation }) => ({
             headerShown: true,
             title: '',

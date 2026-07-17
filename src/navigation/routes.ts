@@ -1,4 +1,4 @@
 export const Routes = {
-  Home: 'Home',
-  MomChecklist: 'MomChecklist',
+  HomeScreen: 'HomeScreen',
+  MomChecklistScreen: 'MomChecklistScreen',
 } as const;
