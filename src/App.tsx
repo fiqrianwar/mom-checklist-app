@@ -1,21 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { useFonts } from 'expo-font';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { fonts } from './assets/fonts';
+import { RootNavigator } from './navigation';
 
 export default function App() {
+  const [loaded] = useFonts({
+    'Satoshi-Regular': fonts['Satoshi-Regular'],
+    'Satoshi-Medium': fonts['Satoshi-Medium'],
+    'Satoshi-Bold': fonts['Satoshi-Bold'],
+  });
+
+  if (!loaded) {
+    return (
+      <View
+        style={{
+          flex: 1,
+
+          justifyContent: 'center',
+
+          alignItems: 'center',
+        }}
+      >
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <BottomSheetModalProvider>
+          <RootNavigator />
+        </BottomSheetModalProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
