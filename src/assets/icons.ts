@@ -11,4 +11,7 @@ export const icons = {
   deleteTrash: require('./icons/delete-trash.png'),
   visibility: require('./icons/visibility.png'),
   edit: require('./icons/edit.png'),
+  checkPurple: require('./icons/check-icon-purple.png'),
+  addPlusWhite: require('./icons/add-plus-white.png'),
+  addPlusPurple: require('./icons/add-plus-purple.png'),
 };
