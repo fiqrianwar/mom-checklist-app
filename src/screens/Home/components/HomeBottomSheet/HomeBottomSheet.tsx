@@ -10,7 +10,8 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '@/navigation';
 
 const HomeBottomSheet = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'MomChecklist'>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList, 'MomChecklistScreen'>>();
 
   const { ref, open, close } = useBottomSheet();
 
@@ -19,7 +20,7 @@ const HomeBottomSheet = () => {
       title: 'New Moms Checklist',
       icon: icons.mom,
       onPress: () => {
-        navigation.navigate('MomChecklist');
+        navigation.navigate('MomChecklistScreen');
         close();
       },
     },
