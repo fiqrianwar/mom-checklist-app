@@ -1,3 +1,2 @@
 export * from './Home';
-export * from './ChecklistNewMoms';
-export * from './ChecklistLilOnes';
+export * from './MomChecklist';

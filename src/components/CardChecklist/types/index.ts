@@ -3,4 +3,6 @@ export type CardChecklistProps = {
   onDelete?: () => void;
   onHide?: () => void;
   onEdit?: () => void;
+  title?: string;
+  progress?: number;
 };

@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
     backgroundColor: '#D4B1EF',
     padding: 16,
   },

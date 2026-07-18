@@ -1,11 +1,11 @@
-import { size } from '@/theme/tokens';
+import { size, spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   content: {
-    padding: 16,
+    padding: spacing['spacing-4'],
     flexDirection: 'column',
-    gap: 20,
+    gap: spacing['spacing-5'],
   },
   header: {
     flexDirection: 'row',
@@ -19,25 +19,31 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
-    padding: 4,
-    fontSize: 20,
+    padding: spacing['spacing-1'],
+    fontSize: spacing['spacing-5'],
     fontWeight: '700',
     borderColor: '#E4E3E6',
   },
   divider: {
-    borderWidth: 6,
+    borderWidth: 5,
     borderColor: '#F0EFF0',
   },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 16,
+    padding: spacing['spacing-4'],
     borderTopWidth: 1,
     borderColor: '#E4E3E6',
-    marginVertical: 24,
+    marginVertical: spacing['spacing-6'],
   },
-  footerButtonLeft: { flex: 1, marginRight: 8 },
-  footerButtonRight: { flex: 1, marginLeft: 8 },
+  footerButtonLeft: {
+    flex: 1,
+    marginRight: spacing['spacing-2'],
+  },
+  footerButtonRight: {
+    flex: 1,
+    marginLeft: spacing['spacing-2'],
+  },
 });
 
 export default styles;
