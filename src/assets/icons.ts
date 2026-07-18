@@ -14,4 +14,5 @@ export const icons = {
   checkPurple: require('./icons/check-icon-purple.png'),
   addPlusWhite: require('./icons/add-plus-white.png'),
   addPlusPurple: require('./icons/add-plus-purple.png'),
+  editPurple: require('./icons/edit-purple.png'),
 };
