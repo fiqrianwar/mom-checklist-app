@@ -1,3 +1,6 @@
+import { ChecklistForm } from '@/schemas/checklist.schema';
+import { Control } from 'react-hook-form';
+
 export type ChecklistItem = {
   id: string;
   title: string;
@@ -5,7 +8,9 @@ export type ChecklistItem = {
 };
 
 export type Props = {
-  item: ChecklistItem;
-  onEdit(id: string): void;
-  onSave(id: string, value: string): void;
+  control: Control<ChecklistForm>;
+  index: number;
+  editing: boolean;
+  onEdit(): void;
+  onSave(): void;
 };

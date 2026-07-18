@@ -1,9 +1,10 @@
+import { spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   containerBottomSheer: {
     flex: 1,
-    padding: 20,
+    padding: spacing['spacing-5'],
   },
 });
 

@@ -18,7 +18,15 @@ const AppScreen = ({
       <Container style={[styles.container, style]}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={contentContainerStyle}
+          style={{
+            flex: 1,
+          }}
+          contentContainerStyle={[
+            contentContainerStyle,
+            {
+              flexGrow: 1,
+            },
+          ]}
         >
           {children}
         </ScrollView>

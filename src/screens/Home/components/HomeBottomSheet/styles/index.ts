@@ -1,4 +1,4 @@
-import { size } from '@/theme/tokens';
+import { size, spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -14,20 +14,20 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: 'column',
-    gap: 24,
-    paddingVertical: 24,
+    gap: spacing['spacing-6'],
+    paddingVertical: spacing['spacing-6'],
   },
   cardOrange: {
-    padding: 16,
+    padding: spacing['spacing-4'],
     backgroundColor: '#FFF0E5',
     borderRadius: 8,
   },
   cardPurple: {
-    padding: 24,
-    paddingBottom: 12,
+    padding: spacing['spacing-6'],
+    paddingBottom: spacing['spacing-3'],
     backgroundColor: '#EADEF2',
-    borderRadius: 8,
-    borderTopRightRadius: 24,
+    borderRadius: spacing['spacing-2'],
+    borderTopRightRadius: spacing['spacing-6'],
     position: 'relative',
   },
   momIconWrapper: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     left: '8%',
   },
   spacer: {
-    paddingTop: 16,
+    paddingTop: spacing['spacing-4'],
   },
   row: {
     flexDirection: 'row',

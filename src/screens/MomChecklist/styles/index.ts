@@ -1,31 +1,33 @@
+import { size, spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#D4B1EF',
-    padding: 16,
+    padding: spacing['spacing-4'],
+    paddingBottom: 42,
   },
   wrapper: {
     flexDirection: 'column',
-    paddingVertical: 16,
-    gap: 24,
+    paddingVertical: spacing['spacing-4'],
+    gap: spacing['spacing-6'],
   },
   infoCard: {
     flexDirection: 'row',
-    borderRadius: 8,
+    borderRadius: size['size-2'],
     backgroundColor: 'white',
   },
   iconWrapper: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
+    paddingHorizontal: spacing['spacing-3'],
+    paddingVertical: spacing['spacing-2'],
+    borderTopLeftRadius: spacing['spacing-2'],
+    borderBottomLeftRadius: spacing['spacing-2'],
     backgroundColor: '#FFE6D5',
-    borderTopRightRadius: 20,
+    borderTopRightRadius: spacing['spacing-5'],
   },
   textWrapper: {
-    paddingHorizontal: 12,
+    paddingHorizontal: spacing['spacing-3'],
     paddingVertical: 10,
     flexDirection: 'row',
     flexShrink: 1,
@@ -33,11 +35,11 @@ const styles = StyleSheet.create({
   infoText: {
     color: '#78707E',
     fontWeight: '700',
-    fontSize: 12,
+    fontSize: size['size-3'],
   },
   checklistContainer: {
     flexDirection: 'column',
-    gap: 16,
+    gap: spacing['spacing-4'],
   },
 });
 

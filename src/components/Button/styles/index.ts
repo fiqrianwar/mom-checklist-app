@@ -1,12 +1,13 @@
+import { spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   secondary: {
     backgroundColor: '#A775C8',
     flexDirection: 'row',
-    padding: 12,
-    gap: 8,
-    borderRadius: 8,
+    padding: spacing['spacing-3'],
+    gap: spacing['spacing-2'],
+    borderRadius: spacing['spacing-2'],
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -17,9 +18,9 @@ const styles = StyleSheet.create({
   primary: {
     backgroundColor: 'white',
     flexDirection: 'row',
-    padding: 12,
-    gap: 8,
-    borderRadius: 8,
+    padding: spacing['spacing-3'],
+    gap: spacing['spacing-2'],
+    borderRadius: spacing['spacing-2'],
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -32,9 +33,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#A775C8',
     flexDirection: 'row',
-    padding: 12,
-    marginTop: 12,
-    gap: 8,
+    padding: spacing['spacing-3'],
+    marginTop: spacing['spacing-3'],
+    gap: spacing['spacing-2'],
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
@@ -46,9 +47,19 @@ const styles = StyleSheet.create({
   formPrimary: {
     backgroundColor: '#A775C8',
     flexDirection: 'row',
-    padding: 12,
-    marginTop: 12,
-    gap: 8,
+    padding: spacing['spacing-3'],
+    marginTop: spacing['spacing-3'],
+    gap: spacing['spacing-2'],
+    borderRadius: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  disabled: {
+    backgroundColor: '#EADEF2',
+    flexDirection: 'row',
+    padding: spacing['spacing-3'],
+    marginTop: spacing['spacing-3'],
+    gap: spacing['spacing-2'],
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
@@ -56,12 +67,17 @@ const styles = StyleSheet.create({
   linkText: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: spacing['spacing-2'],
     justifyContent: 'center',
   },
 
   textLinkText: {
     color: '#A775C8',
+    fontWeight: '700',
+  },
+
+  textDisabled: {
+    color: '#FFFFFF',
     fontWeight: '700',
   },
 

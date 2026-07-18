@@ -1,14 +1,12 @@
-// screens/NewMomsScreen.tsx
-import React from 'react';
-import { Image, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React from 'react';
+import { View } from 'react-native';
 
-import { icons } from '@/assets';
 import { AppModal, AppScreen, CardChecklist, CardCheckListItem } from '@/components';
 import { TopTabParamList } from '@/navigation';
-import { FormChecklist } from './components';
-import styles from './styles';
+import { FormChecklist, HeaderStaticCard } from './components';
 import { useChecklistManager } from './hooks/useChecklistManager';
+import styles from './styles';
 
 type NewMomsScreenProps = NativeStackScreenProps<TopTabParamList, 'NewMoms'>;
 
@@ -27,16 +25,7 @@ const NewMomsScreen = ({ route }: NewMomsScreenProps) => {
   return (
     <AppScreen useSafeArea={false} contentContainerStyle={styles.screen} scrollable>
       <View style={styles.wrapper}>
-        <View style={styles.infoCard}>
-          <View style={styles.iconWrapper}>
-            <Image source={icons.books} />
-          </View>
-          <View style={styles.textWrapper}>
-            <Text style={styles.infoText}>
-              Yuk, siapkan checklist untuk mempermudah persiapan kelahiran si Kecil!
-            </Text>
-          </View>
-        </View>
+        <HeaderStaticCard />
 
         <View style={styles.checklistContainer}>
           {dataItems.map((checklist) => {
@@ -73,7 +62,6 @@ const NewMomsScreen = ({ route }: NewMomsScreenProps) => {
         </View>
       </View>
 
-      {/* Delete Modal */}
       <AppModal
         ref={modalRef}
         title="Delete Checklist"

@@ -1,34 +1,41 @@
+import { size, spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#FFE6D5',
-    padding: 16,
-    borderRadius: 8,
-    // Shadow for iOS
+    padding: spacing['spacing-4'],
+    borderRadius: size['size-2'],
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: size['size-0'], height: size['size-2'] },
     shadowOpacity: 0.15,
-    shadowRadius: 4,
-    // Shadow for Android
+    shadowRadius: size['size-1'],
     elevation: 3,
   },
   cardOpen: {
-    borderBottomRightRadius: 0,
-    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: size['size-0'],
+    borderBottomLeftRadius: size['size-0'],
   },
   cardClosed: {
-    borderBottomRightRadius: 8,
-    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: spacing['spacing-2'],
+    borderBottomLeftRadius: spacing['spacing-2'],
   },
   cardContent: {
     flexDirection: 'column',
-    gap: 8,
+    gap: spacing['spacing-2'],
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  containerCompleteText: {
+    flexDirection: 'row',
+    gap: spacing['spacing-2'],
+  },
+  completeText: {
+    color: '#A775C8',
+    fontWeight: '700',
   },
   cardTitle: {
     fontWeight: '700',
@@ -41,17 +48,17 @@ const styles = StyleSheet.create({
   ctaContainer: {
     backgroundColor: '#A775C8',
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: spacing['spacing-5'],
     flexDirection: 'row',
-    borderBottomRightRadius: 8,
-    borderBottomLeftRadius: 8,
-    gap: 20,
+    borderBottomRightRadius: spacing['spacing-2'],
+    borderBottomLeftRadius: spacing['spacing-2'],
+    gap: spacing['spacing-5'],
     justifyContent: 'flex-end',
   },
   ctaItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    gap: spacing['spacing-1'],
   },
   ctaText: {
     color: 'white',

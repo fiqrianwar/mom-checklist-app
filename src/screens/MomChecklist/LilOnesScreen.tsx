@@ -1,9 +1,8 @@
-import { icons } from '@/assets';
 import { AppModal, AppScreen, CardChecklist, CardCheckListItem } from '@/components';
 import { TopTabParamList } from '@/navigation';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { FormChecklist, HeaderStaticCard } from './components';
 import { useChecklistManager } from './hooks/useChecklistManager';
 import styles from './styles';

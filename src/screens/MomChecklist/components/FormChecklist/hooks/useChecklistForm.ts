@@ -1,62 +1,118 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
 
 import { ChecklistForm, checklistSchema } from '@/schemas/checklist.schema';
 import { Checklist, useChecklistStore } from '@/store';
-import { ChecklistItem } from '@/components/CardsInputEdit/types';
 
 export const useChecklistForm = (routeName: string) => {
   const { add, update } = useChecklistStore();
 
+  const closeForm = (onClose: () => void) => {
+    resetForm();
+    onClose();
+  };
+
+  const closeSheet = () => {
+    resetForm();
+  };
+
   const [editingChecklist, setEditingChecklist] = useState<Checklist | null>(null);
-  const [items, setItems] = useState<ChecklistItem[]>([
-    { id: Date.now().toString(), title: '', editing: true },
-  ]);
+
+  const [editingIds, setEditingIds] = useState<Record<string, boolean>>({});
 
   const { control, handleSubmit, reset } = useForm<ChecklistForm>({
     resolver: zodResolver(checklistSchema),
-    defaultValues: { title: '' },
+    defaultValues: {
+      title: '',
+      checklistItems: [
+        {
+          id: Date.now().toString(),
+          title: '',
+        },
+      ],
+    },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'checklistItems',
   });
 
   const resetForm = () => {
     setEditingChecklist(null);
-    reset({ title: '' });
-    setItems([{ id: Date.now().toString(), title: '', editing: true }]);
+
+    const id = Date.now().toString();
+
+    reset({
+      title: '',
+      checklistItems: [
+        {
+          id,
+          title: '',
+        },
+      ],
+    });
+
+    setEditingIds({
+      [id]: true,
+    });
   };
 
   const openForm = (checklist?: Checklist) => {
     if (checklist) {
       setEditingChecklist(checklist);
-      reset({ title: checklist.title });
-      setItems(
-        checklist.checklistItems.map((item) => ({
+
+      reset({
+        title: checklist.title,
+        checklistItems: checklist.checklistItems.map((item) => ({
           id: item.id,
           title: item.title,
-          editing: false,
         })),
+      });
+
+      setEditingIds(
+        checklist.checklistItems.reduce(
+          (acc, item) => ({
+            ...acc,
+            [item.id]: false,
+          }),
+          {},
+        ),
       );
-    } else {
-      resetForm();
+
+      return;
     }
+
+    resetForm();
   };
 
-  const handleAddItem = () =>
-    setItems((prev) => [...prev, { id: Date.now().toString(), title: '', editing: true }]);
+  const handleAddItem = () => {
+    append({
+      id: Date.now().toString(),
+      title: '',
+    });
+  };
 
-  const handleEdit = (id: string) =>
-    setItems((prev) => prev.map((item) => (item.id === id ? { ...item, editing: true } : item)));
+  const handleEdit = (id: string) => {
+    setEditingIds((prev) => ({
+      ...prev,
+      [id]: true,
+    }));
+  };
 
-  const handleSave = (id: string, title: string) =>
-    setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, title, editing: false } : item)),
-    );
+  const handleSave = (id: string) => {
+    setEditingIds((prev) => ({
+      ...prev,
+      [id]: false,
+    }));
+  };
 
   const onSubmit = (data: ChecklistForm, onClose: () => void) => {
     const payload = {
       title: data.title,
       completed: editingChecklist?.completed ?? false,
-      checklistItems: items.map((item) => ({
+      checklistItems: data.checklistItems.map((item) => ({
         id: item.id,
         title: item.title,
         completed: false,
@@ -80,13 +136,17 @@ export const useChecklistForm = (routeName: string) => {
   return {
     control,
     handleSubmit,
-    items,
+    fields,
+    editingIds,
     editingChecklist,
     openForm,
     resetForm,
     handleAddItem,
     handleEdit,
     handleSave,
+    remove,
     onSubmit,
+    closeForm,
+    closeSheet,
   };
 };

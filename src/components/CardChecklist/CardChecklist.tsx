@@ -10,7 +10,7 @@ const CardChecklist: React.FC<CardChecklistProps> = ({
   onDelete,
   onHide,
   onEdit,
-  progress,
+  progress = 0,
   title,
 }) => {
   const [openCTA, setOpenCTA] = useState(false);
@@ -28,7 +28,14 @@ const CardChecklist: React.FC<CardChecklistProps> = ({
       <View style={[styles.card, openCTA ? styles.cardOpen : styles.cardClosed]}>
         <View style={styles.cardContent}>
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>{title}</Text>
+            {progress === 1 ? (
+              <View style={styles.containerCompleteText}>
+                <Image source={icons.checkPurple} />
+                <Text style={styles.completeText}>{title}</Text>
+              </View>
+            ) : (
+              <Text style={[styles.cardTitle]}>{title}</Text>
+            )}
             <Pressable onPress={handleOpenCTA}>
               <Image source={icons.more} />
             </Pressable>
