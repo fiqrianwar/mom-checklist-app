@@ -1,18 +1,19 @@
+import { spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#EADEF2',
-    padding: 12,
-    borderRadius: 8,
+    padding: spacing['spacing-3'],
+    borderRadius: spacing['spacing-2'],
   },
   container: {
     paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderRadius: 8,
+    paddingHorizontal: spacing['spacing-3'],
+    borderRadius: spacing['spacing-2'],
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    gap: spacing['spacing-4'],
   },
   checked: {
     backgroundColor: '#EADEF2',
@@ -21,19 +22,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   checkIcon: {
-    width: 24,
-    height: 24,
+    width: spacing['spacing-6'],
+    height: spacing['spacing-6'],
   },
   circle: {
-    width: 24,
-    height: 24,
+    width: spacing['spacing-6'],
+    height: spacing['spacing-6'],
     borderWidth: 1,
-    borderRadius: 12, // ✅ use numeric radius instead of '50%'
+    borderRadius: spacing['spacing-3'],
     borderColor: '#A775C8',
   },
   textContainer: {
     flexDirection: 'column',
-    gap: 4,
+    gap: spacing['spacing-1'],
   },
   title: {
     fontWeight: '700',

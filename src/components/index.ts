@@ -8,3 +8,4 @@ export * from './CardCheckListItem';
 export * from './Button';
 export * from './CardsInputEdit';
 export * from './AppModal';
+export * from './FormTextInput';

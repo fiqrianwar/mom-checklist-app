@@ -1,13 +1,13 @@
-import { Button, Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { useBottomSheet } from '@/hooks/useBottomSheet';
-import { BottomSheet } from '@/components';
-import { size } from '@/theme/tokens';
 import { icons } from '@/assets';
-import styles from './styles';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
+import { BottomSheet, Button } from '@/components';
+import { useBottomSheet } from '@/hooks/useBottomSheet';
 import { RootStackParamList } from '@/navigation';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React from 'react';
+import { Image, Pressable, Text, View } from 'react-native';
+
+import styles from './styles';
 
 const HomeBottomSheet = () => {
   const navigation =
@@ -33,7 +33,9 @@ const HomeBottomSheet = () => {
 
   return (
     <>
-      <Button onPress={open} title="Open Nav" />
+      <View style={{ flex: 1, marginVertical: '80%', padding: 16 }}>
+        <Button onPress={open} title="Open Nav" variant="secondary" />
+      </View>
 
       <BottomSheet ref={ref}>
         <View style={styles.header}>

@@ -5,7 +5,14 @@ import styles from './styles/index';
 import { ProgressBar } from '../ProgressBar';
 import { CardChecklistProps } from './types';
 
-const CardChecklist: React.FC<CardChecklistProps> = ({ onPress, onDelete, onHide, onEdit }) => {
+const CardChecklist: React.FC<CardChecklistProps> = ({
+  onPress,
+  onDelete,
+  onHide,
+  onEdit,
+  progress,
+  title,
+}) => {
   const [openCTA, setOpenCTA] = useState(false);
 
   const handleOpenCTA = () => setOpenCTA(!openCTA);
@@ -21,12 +28,12 @@ const CardChecklist: React.FC<CardChecklistProps> = ({ onPress, onDelete, onHide
       <View style={[styles.card, openCTA ? styles.cardOpen : styles.cardClosed]}>
         <View style={styles.cardContent}>
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>Pregnancy (0/5)</Text>
+            <Text style={styles.cardTitle}>{title}</Text>
             <Pressable onPress={handleOpenCTA}>
               <Image source={icons.more} />
             </Pressable>
           </View>
-          <ProgressBar progress={0.5} />
+          <ProgressBar progress={progress as number} />
         </View>
       </View>
 

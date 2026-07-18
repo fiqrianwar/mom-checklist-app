@@ -1,10 +1,11 @@
 import { icons } from '@/assets';
 import { TabBar } from '@/components';
-import { ChecklistLilOnesScreen, ChecklistNewMomsScreen } from '@/screens';
+import { LilOnesScreen, NewMomsScreen } from '@/screens';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React from 'react';
+import { TopTabParamList } from './types';
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createMaterialTopTabNavigator<TopTabParamList>();
 
 const TopTabsMomChecklist = () => {
   return (
@@ -18,7 +19,7 @@ const TopTabsMomChecklist = () => {
     >
       <Tab.Screen
         name="NewMoms"
-        component={ChecklistNewMomsScreen}
+        component={NewMomsScreen}
         options={{
           title: 'New Moms',
           tabBarIcon: icons.momOval,
@@ -26,7 +27,7 @@ const TopTabsMomChecklist = () => {
       />
       <Tab.Screen
         name="LilOnes"
-        component={ChecklistLilOnesScreen}
+        component={LilOnesScreen}
         options={{
           title: `Lil' Ones`,
           tabBarIcon: icons.momBaby,

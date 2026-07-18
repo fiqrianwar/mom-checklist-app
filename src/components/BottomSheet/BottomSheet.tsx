@@ -2,13 +2,12 @@ import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetModal,
-  BottomSheetView,
+  BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 
 import React, { forwardRef, useMemo } from 'react';
 import styles from './styles';
 import { PropsBottomSheet } from './types';
-import { KeyboardAvoidingView, Platform } from 'react-native';
 
 const AppBottomSheet = forwardRef<BottomSheetModal, PropsBottomSheet>(
   ({ children, style }, ref) => {
@@ -29,7 +28,13 @@ const AppBottomSheet = forwardRef<BottomSheetModal, PropsBottomSheet>(
         android_keyboardInputMode="adjustResize"
         enableDynamicSizing={false}
       >
-        <BottomSheetView style={[styles.containerBottomSheer, style]}>{children}</BottomSheetView>
+        <BottomSheetScrollView
+          style={[styles.containerBottomSheer, style]}
+          contentContainerStyle={{ paddingBottom: 20 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {children}
+        </BottomSheetScrollView>
       </BottomSheetModal>
     );
   },

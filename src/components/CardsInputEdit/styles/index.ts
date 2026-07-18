@@ -1,13 +1,16 @@
+import { spacing } from '@/theme/tokens';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
-    padding: 16,
+    padding: spacing['spacing-4'],
   },
   card: {
     backgroundColor: '#F4EEF8',
-    padding: 12,
-    borderRadius: 8,
+    margin: spacing['spacing-3'],
+    paddingHorizontal: spacing['spacing-3'],
+    paddingVertical: 10,
+    borderRadius: spacing['spacing-2'],
   },
   editCard: {
     flexDirection: 'row',
@@ -17,18 +20,18 @@ const styles = StyleSheet.create({
   editCardLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: spacing['spacing-3'],
   },
   dividerGroup: {
     flexDirection: 'row',
-    gap: 4,
+    gap: spacing['spacing-1'],
     alignItems: 'center',
   },
   divider: {
     width: 1,
     height: 18,
     backgroundColor: '#CFB4E1',
-    marginVertical: 12,
+    marginVertical: spacing['spacing-3'],
   },
   cardTitle: {
     fontWeight: '700',
@@ -37,12 +40,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 16,
+    gap: spacing['spacing-4'],
   },
   textInput: {
     flex: 1,
     borderBottomWidth: 1,
-    paddingVertical: 16,
+    paddingVertical: spacing['spacing-4'],
     borderColor: '#C9AADD',
   },
 });

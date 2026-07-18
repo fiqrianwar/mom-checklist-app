@@ -1,46 +1,47 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import { Button } from '../Button';
 import { icons } from '@/assets';
+import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import React, { useEffect, useState } from 'react';
+import { Image, Pressable, Text, View } from 'react-native';
+import { Button } from '../Button';
 import styles from './styles';
+import { Props } from './types';
 
-const CardsInputEdit = () => {
-  const [editing, setEditing] = useState(false);
+const CardsInputEdit = ({ item, onEdit, onSave }: Props) => {
+  const [value, setValue] = useState(item.title);
 
-  const handleSave = () => {
-    setEditing(false);
-  };
-
-  const handleEdit = () => {
-    setEditing(true);
-  };
+  useEffect(() => {
+    setValue(item.title);
+  }, [item.title]);
 
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.card}>
-        {editing ? (
-          <View style={styles.editingRow}>
-            <BottomSheetTextInput placeholder="Masukkan Item List" style={styles.textInput} />
-            <View>
-              <Button title="Save" variant="formPrimary" onPress={handleSave} />
+    <View style={styles.card}>
+      {item.editing ? (
+        <View style={styles.editingRow}>
+          <BottomSheetTextInput
+            value={value}
+            onChangeText={setValue}
+            placeholder="Exp: Stretch Mark Care"
+            style={styles.textInput}
+          />
+
+          <Button title="Save" variant="formPrimary" onPress={() => onSave(item.id, value)} />
+        </View>
+      ) : (
+        <View style={styles.editCard}>
+          <View style={styles.editCardLeft}>
+            <View style={styles.dividerGroup}>
+              <View style={styles.divider} />
+              <View style={styles.divider} />
             </View>
+
+            <Text style={styles.cardTitle}>{item.title}</Text>
           </View>
-        ) : (
-          <View style={styles.editCard}>
-            <View style={styles.editCardLeft}>
-              <View style={styles.dividerGroup}>
-                <View style={styles.divider} />
-                <View style={styles.divider} />
-              </View>
-              <Text style={styles.cardTitle}>Your checklist item</Text>
-            </View>
-            <Pressable onPress={handleEdit}>
-              <Image source={icons.editPurple} />
-            </Pressable>
-          </View>
-        )}
-      </View>
+
+          <Pressable onPress={() => onEdit(item.id)}>
+            <Image source={icons.editPurple} />
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 };

@@ -3,17 +3,12 @@ import React, { useState } from 'react';
 import { icons } from '@/assets';
 import styles from './styles/index';
 import { Button } from '../Button';
+import { Props } from './types';
 
-type Props = {};
-
-const CardCheckListItem = (props: Props) => {
-  const [checked, setChecked] = useState(false);
-
-  const toggleCheck = () => setChecked(!checked);
-
+const CardCheckListItem = ({ text, checked, pressToggle }: Props) => {
   return (
     <View style={styles.wrapper}>
-      <Pressable onPress={toggleCheck}>
+      <Pressable onPress={pressToggle}>
         <View style={[styles.container, checked ? styles.checked : styles.unchecked]}>
           {checked ? (
             <Image source={icons.checkPurple} style={styles.checkIcon} />
@@ -22,24 +17,11 @@ const CardCheckListItem = (props: Props) => {
           )}
 
           <View style={styles.textContainer}>
-            <Text style={[styles.title, checked && styles.lineThrough]}>Pregnancy Milk</Text>
+            <Text style={[styles.title, checked && styles.lineThrough]}>{text}</Text>
             <Text style={[styles.subtitle, checked && styles.lineThrough]}>5 Products</Text>
           </View>
         </View>
       </Pressable>
-
-      <View
-        style={{
-          marginTop: 12,
-        }}
-      >
-        <Button
-          title="Add New Item"
-          variant="secondary"
-          icon={icons.addPlusWhite}
-          onPress={() => console.log('Pressed')}
-        />
-      </View>
     </View>
   );
 };
