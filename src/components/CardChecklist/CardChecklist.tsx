@@ -3,20 +3,21 @@ import React, { useState } from 'react';
 import { icons } from '@/assets';
 import styles from './styles/index';
 import { ProgressBar } from '../ProgressBar';
+import { CardChecklistProps } from './types';
 
-const CardChecklist = () => {
+const CardChecklist: React.FC<CardChecklistProps> = ({ onPress, onDelete, onHide, onEdit }) => {
   const [openCTA, setOpenCTA] = useState(false);
 
   const handleOpenCTA = () => setOpenCTA(!openCTA);
 
   const cardCTA = [
-    { icon: icons.deleteTrash, text: 'Delete', onPress: () => {} },
-    { icon: icons.visibility, text: 'Hide', onPress: () => {} },
-    { icon: icons.edit, text: 'Edit', onPress: () => {} },
+    { icon: icons.deleteTrash, text: 'Delete', onPress: onDelete },
+    { icon: icons.visibility, text: 'Hide', onPress: onHide },
+    { icon: icons.edit, text: 'Edit', onPress: onEdit },
   ];
 
   return (
-    <Pressable onPress={() => alert('jas')}>
+    <Pressable onPress={onPress}>
       <View style={[styles.card, openCTA ? styles.cardOpen : styles.cardClosed]}>
         <View style={styles.cardContent}>
           <View style={styles.cardHeader}>

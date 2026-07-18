@@ -6,3 +6,5 @@ export * from './CardChecklist';
 export * from './ProgressBar';
 export * from './CardCheckListItem';
 export * from './Button';
+export * from './CardsInputEdit';
+export * from './AppModal';

@@ -53,6 +53,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  linkText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    justifyContent: 'center',
+  },
+
+  textLinkText: {
+    color: '#A775C8',
+    fontWeight: '700',
+  },
+
   textFormPrimary: {
     color: 'white',
     fontWeight: '700',
