@@ -73,14 +73,14 @@ A React Native application built with Expo to help parents organize and track ch
 src
 ├── assets
 ├── components
+├── constants
 ├── hooks
 ├── navigation
 ├── schemas
 ├── screens
+├── storage
 ├── store
 ├── theme
-├── types
-└── utils
 ```
 
 ---
