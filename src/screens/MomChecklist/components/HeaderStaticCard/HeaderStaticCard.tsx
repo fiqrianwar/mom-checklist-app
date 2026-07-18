@@ -3,9 +3,7 @@ import React from 'react';
 import styles from '../../styles';
 import { icons } from '@/assets';
 
-type Props = {};
-
-const HeaderStaticCard = (props: Props) => {
+const HeaderStaticCard = () => {
   return (
     <View style={styles.infoCard}>
       <View style={styles.iconWrapper}>

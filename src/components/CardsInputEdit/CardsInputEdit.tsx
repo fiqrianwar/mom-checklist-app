@@ -1,30 +1,63 @@
 import { icons } from '@/assets';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Controller, useWatch, useFormState } from 'react-hook-form';
 import { Image, Pressable, Text, View } from 'react-native';
 import { Button } from '../Button';
 import styles from './styles';
 import { Props } from './types';
 
-const CardsInputEdit = ({ item, onEdit, onSave }: Props) => {
-  const [value, setValue] = useState(item.title);
+const CardsInputEdit = ({ control, index, editing, onEdit, onSave }: Props) => {
+  const title = useWatch({
+    control,
+    name: `checklistItems.${index}.title`,
+  });
 
-  useEffect(() => {
-    setValue(item.title);
-  }, [item.title]);
+  const isEmpty = !title?.trim();
+
+  const { errors } = useFormState({
+    control,
+  });
+
+  const error = errors.checklistItems?.[index]?.title;
 
   return (
     <View style={styles.card}>
-      {item.editing ? (
+      {editing ? (
         <View style={styles.editingRow}>
-          <BottomSheetTextInput
-            value={value}
-            onChangeText={setValue}
-            placeholder="Exp: Stretch Mark Care"
-            style={styles.textInput}
+          <Controller
+            control={control}
+
+            name={`checklistItems.${index}.title`}
+
+            render={({ field, fieldState }) => (
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'column',
+                  gap: 12,
+                }}
+              >
+                <BottomSheetTextInput
+                  value={field.value}
+                  onChangeText={field.onChange}
+                  placeholder="Exp: Stretch Mark Care"
+                  style={styles.textInput}
+                />
+                <View>
+                  {fieldState.error && (
+                    <Text style={{ color: 'red' }}>{fieldState.error.message}</Text>
+                  )}
+                </View>
+              </View>
+            )}
           />
 
-          <Button title="Save" variant="formPrimary" onPress={() => onSave(item.id, value)} />
+          {!error && !isEmpty ? (
+            <Button title="Save" variant={'formPrimary'} onPress={onSave} />
+          ) : (
+            <Button title="Save" variant={'disabled'} />
+          )}
         </View>
       ) : (
         <View style={styles.editCard}>
@@ -34,10 +67,10 @@ const CardsInputEdit = ({ item, onEdit, onSave }: Props) => {
               <View style={styles.divider} />
             </View>
 
-            <Text style={styles.cardTitle}>{item.title}</Text>
+            <Text style={styles.cardTitle}>{title}</Text>
           </View>
 
-          <Pressable onPress={() => onEdit(item.id)}>
+          <Pressable onPress={onEdit}>
             <Image source={icons.editPurple} />
           </Pressable>
         </View>

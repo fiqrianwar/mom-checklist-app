@@ -67,7 +67,7 @@ A React Native application built with Expo to help parents organize and track ch
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 src
@@ -122,7 +122,7 @@ npm run ios
 
 ---
 
-## 📜 Available Scripts
+## Available Scripts
 
 | Command           | Description                    |
 | ----------------- | ------------------------------ |

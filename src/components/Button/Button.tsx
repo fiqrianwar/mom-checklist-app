@@ -11,6 +11,11 @@ const Button = ({ title, variant, icon, onPress }: ButtonProps) => {
           {icon && <Image source={icon} />}
           <Text style={styles.textLinkText}>{title}</Text>
         </>
+      ) : variant === 'disabled' ? (
+        <>
+          {icon && <Image source={icon} />}
+          <Text style={styles.textDisabled}>{title}</Text>
+        </>
       ) : variant === 'primary' ? (
         <>
           <Text style={styles.textPrimary}>{title}</Text>

@@ -33,7 +33,13 @@ const HomeBottomSheet = () => {
 
   return (
     <>
-      <View style={{ flex: 1, marginVertical: '80%', padding: 16 }}>
+      <View
+        style={{
+          flex: 1,
+          marginVertical: '80%',
+          padding: 16,
+        }}
+      >
         <Button onPress={open} title="Open Nav" variant="secondary" />
       </View>
 

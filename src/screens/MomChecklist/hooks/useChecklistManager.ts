@@ -1,10 +1,6 @@
-import { useState, useRef } from 'react';
 import { AppModalRef } from '@/components';
 import { useChecklistStore } from '@/store';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { TopTabParamList } from '@/navigation';
-
-type ProfileScreenProps = NativeStackScreenProps<TopTabParamList, 'LilOnes'>;
+import { useRef, useState } from 'react';
 
 export const useChecklistManager = (route: string) => {
   const modalRef = useRef<AppModalRef>(null);

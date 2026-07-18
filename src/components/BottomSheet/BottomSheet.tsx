@@ -10,7 +10,7 @@ import styles from './styles';
 import { PropsBottomSheet } from './types';
 
 const AppBottomSheet = forwardRef<BottomSheetModal, PropsBottomSheet>(
-  ({ children, style }, ref) => {
+  ({ children, style, onDismis }, ref) => {
     const snapPoints = useMemo(() => ['50%'], []);
 
     const renderBackdrop = (props: BottomSheetBackdropProps) => (
@@ -20,6 +20,7 @@ const AppBottomSheet = forwardRef<BottomSheetModal, PropsBottomSheet>(
     return (
       <BottomSheetModal
         ref={ref}
+        onDismiss={onDismis}
         snapPoints={snapPoints}
         index={0}
         backdropComponent={renderBackdrop}
